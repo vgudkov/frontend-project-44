@@ -10,6 +10,19 @@ const getWrongAnswer = (playerName, wrongAnswer, correctAnswer) => console.log(`
 // Функция, которая выводит текст при победе
 const showWinner = (playerName) => console.log(`Congratulations, ${playerName}!`);
 
+// Функция, которая вычисляет наибольший общий делитель 2-х чисел
+const gcdFunction = (a, b) => {
+  let firstNumber = a;
+  let secondNumber = b;
+
+  while (secondNumber !== 0) {
+    const temp = secondNumber;
+    secondNumber = firstNumber % secondNumber;
+    firstNumber = temp;
+  }
+  return firstNumber;
+};
+
 export {
-  getRandomNumber, isEven, getWrongAnswer, showWinner,
+  getRandomNumber, isEven, getWrongAnswer, showWinner, gcdFunction,
 };

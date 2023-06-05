@@ -6,3 +6,9 @@
 
 ### Asciinema recording for brain-even game:
 [![asciicast](https://asciinema.org/a/QxSTaHg8PY7ggHoKomfPNrjzg.svg)](https://asciinema.org/a/QxSTaHg8PY7ggHoKomfPNrjzg)
+
+### Asciinema recording for brain-calc game:
+[![asciicast](https://asciinema.org/a/WToZQS1e2geIN8zrlIS2y5tUZ.svg)](https://asciinema.org/a/WToZQS1e2geIN8zrlIS2y5tUZ)
+
+### Asciinema recording for brain-gcd game:
+[![asciicast](https://asciinema.org/a/BiGIIbDSCKBLQUi551QI32lm9.svg)](https://asciinema.org/a/BiGIIbDSCKBLQUi551QI32lm9)
