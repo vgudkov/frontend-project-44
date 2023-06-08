@@ -6,7 +6,7 @@ import {
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
 
-console.log(`Hi, ${playerName}!`);
+console.log(`Hello, ${playerName}!`);
 console.log('Find the greatest common divisor of given numbers.');
 
 export default () => {
