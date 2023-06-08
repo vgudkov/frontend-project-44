@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import {
   getRandomNumber, getWrongAnswer, showWinner,
-} from './add_functions.js';
+} from '../src/add_functions.js';
 
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
@@ -23,7 +23,7 @@ export default () => {
     let additionResult;
     let substractionResult;
     let multiplicationResult;
-    let trueResult = [];
+    const trueResult = [];
 
     switch (operationSign) {
       case '+':

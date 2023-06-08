@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import primeFunction from '../src/prime.js';
+import primeFunction from '../games/prime.js';
 
 primeFunction();
