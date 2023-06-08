@@ -21,7 +21,8 @@ export default () => {
     }
 
     const randomHiddenMember = getRandomNumber(11);
-    const trueProgressionMember = progressionMassive[randomHiddenMember].toString();
+    let trueProgressionMember = progressionMassive[randomHiddenMember];
+    trueProgressionMember = trueProgressionMember.toString();
     progressionMassive[randomHiddenMember] = '..';
 
     const progressionRow = progressionMassive.join(' ');
