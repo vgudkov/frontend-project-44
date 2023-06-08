@@ -15,3 +15,6 @@
 
 ### Asciinema recording for brain-progression game:
 [![asciicast](https://asciinema.org/a/EA5b49uiowJWR15PoqJiP9Cdb.svg)](https://asciinema.org/a/EA5b49uiowJWR15PoqJiP9Cdb)
+
+### Asciinema recording for brain-prime game:
+[![asciicast](https://asciinema.org/a/8HFyPXZThT6KBLOgvgPuA2kO9.svg)](https://asciinema.org/a/8HFyPXZThT6KBLOgvgPuA2kO9)
