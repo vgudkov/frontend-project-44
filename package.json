@@ -10,7 +10,7 @@
     "brain-prime": "bin/brain-prime.js"
   },
   "type": "module",
-  "description": "[![Actions Status](https://github.com/vgudkov/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/vgudkov/frontend-project-44/actions)",
+  "description": "The first project for Hexlet JS course: brain-games",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
