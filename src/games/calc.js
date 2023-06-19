@@ -1,24 +1,23 @@
 import readlineSync from 'readline-sync';
-import {
-  getRandomNumber, getWrongAnswer, showWinner,
-} from '../src/add_functions.js';
+import { getRandomInRange, getWrongAnswer, showWinner } from '../utils.js';
 
+// Приветствие игрока & правила игры
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
-
 console.log(`Hello, ${playerName}!`);
 console.log('What is the result of the expression?');
 
+// Логика игры
 export default () => {
   const mathOperations = ['+', '-', '*'];
 
   for (let i = 0; i <= 2; i += 1) {
-    const firstNumber = getRandomNumber(101);
-    const secondNumber = getRandomNumber(101);
-    const operationSign = mathOperations[getRandomNumber(3)];
+    const firstNumber = getRandomInRange();
+    const secondNumber = getRandomInRange();
+    const operationSign = mathOperations[getRandomInRange(0, 2)];
 
     console.log(`Question: ${firstNumber} ${operationSign} ${secondNumber}`);
-    const resultAnswer = readlineSync.question('Your answer: ');
+    const playerAnswer = readlineSync.question('Your answer: ');
 
     let additionResult;
     let substractionResult;
@@ -45,14 +44,14 @@ export default () => {
         break;
     }
 
-    if (resultAnswer === additionResult) {
+    if (playerAnswer === additionResult) {
       console.log('Correct!');
-    } else if (resultAnswer === substractionResult) {
+    } else if (playerAnswer === substractionResult) {
       console.log('Correct!');
-    } else if (resultAnswer === multiplicationResult) {
+    } else if (playerAnswer === multiplicationResult) {
       console.log('Correct!');
     } else {
-      return getWrongAnswer(playerName, resultAnswer, trueResult[trueResult.length - 1]);
+      return getWrongAnswer(playerName, playerAnswer, trueResult[trueResult.length - 1]);
     }
   }
 

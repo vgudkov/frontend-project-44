@@ -1,26 +1,27 @@
 import readlineSync from 'readline-sync';
 import {
-  getRandomNumber, getWrongAnswer, showWinner,
-} from '../src/add_functions.js';
+  getRandomInRange, getWrongAnswer, showWinner,
+} from '../utils.js';
 
+// Приветствие игрока & правила игры
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
-
 console.log(`Hello, ${playerName}!`);
 console.log('What number is missing in the progression?');
 
+// Логика игры
 export default () => {
   for (let i = 0; i <= 2; i += 1) {
     const progressionMassive = [];
-    const progressionDiff = 10 - getRandomNumber(10);
-    let progressionMember = getRandomNumber(101);
+    const progressionDiff = 10 - getRandomInRange(0, 10);
+    let progressionMember = getRandomInRange();
 
     for (let j = 0; j < 10; j += 1) {
       progressionMassive.push(progressionMember);
       progressionMember += progressionDiff;
     }
 
-    const randomHiddenMember = getRandomNumber(11);
+    const randomHiddenMember = getRandomInRange(0, 10);
     let trueProgressionMember = progressionMassive[randomHiddenMember];
     trueProgressionMember = trueProgressionMember.toString();
     progressionMassive[randomHiddenMember] = '..';
@@ -28,12 +29,12 @@ export default () => {
     const progressionRow = progressionMassive.join(' ');
 
     console.log(`Question: ${progressionRow}`);
-    const progressionAnswer = readlineSync.question('Your answer: ');
+    const playerAnswer = readlineSync.question('Your answer: ');
 
-    if (progressionAnswer === trueProgressionMember) {
+    if (playerAnswer === trueProgressionMember) {
       console.log('Correct!');
     } else {
-      return getWrongAnswer(playerName, progressionAnswer, trueProgressionMember);
+      return getWrongAnswer(playerName, playerAnswer, trueProgressionMember);
     }
   }
 
