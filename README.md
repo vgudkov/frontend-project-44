@@ -5,9 +5,14 @@
 ## Setup
 
 ```bash
+1. Copy application from github
 git clone https://github.com/vgudkov/frontend-project-44
-npm init
+
+2. Install all dependecies for the programm
 make install
+
+3. Install package in system
+npm link
 ```
 
 ## Start games
