@@ -3,13 +3,13 @@ import {
   getRandomInRange, getWrongAnswer, showWinner,
 } from '../utils.js';
 
-// Приветствие игрока & правила игры
+// Welcome & Rules
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
 console.log(`Hello, ${playerName}!`);
 console.log('Find the greatest common divisor of given numbers.');
 
-// Функция, которая вычисляет наибольший общий делитель 2-х чисел
+// Logic for the greatest common divisor function
 const gcdFunction = (a, b) => {
   let firstNumber = a;
   let secondNumber = b;
@@ -22,7 +22,7 @@ const gcdFunction = (a, b) => {
   return firstNumber;
 };
 
-// Логика игры
+// Game logic
 export default () => {
   for (let i = 0; i <= 2; i += 1) {
     const randomNumber1 = getRandomInRange();

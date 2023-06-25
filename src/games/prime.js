@@ -3,13 +3,13 @@ import {
   getRandomInRange, getWrongAnswer, showWinner,
 } from '../utils.js';
 
-// Приветствие игрока & правила игры
+// Welcome & Rules
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
 console.log(`Hello, ${playerName}!`);
 console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
 
-// Функция, которая определяет, является ли число простым
+// Logic for the prime function
 const isPrime = (number) => {
   if (number < 2) {
     return false;
@@ -25,7 +25,7 @@ const isPrime = (number) => {
   return true;
 };
 
-// Логика игры
+// Game logic
 export default () => {
   for (let i = 0; i <= 2; i += 1) {
     const randomNumber = getRandomInRange();

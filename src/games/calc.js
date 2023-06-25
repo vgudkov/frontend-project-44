@@ -1,13 +1,13 @@
 import readlineSync from 'readline-sync';
 import { getRandomInRange, getWrongAnswer, showWinner } from '../utils.js';
 
-// Приветствие игрока & правила игры
+// Welcome & Rules
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
 console.log(`Hello, ${playerName}!`);
 console.log('What is the result of the expression?');
 
-// Логика игры
+// Game logic
 export default () => {
   const mathOperations = ['+', '-', '*'];
 

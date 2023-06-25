@@ -3,16 +3,16 @@ import {
   getRandomInRange, getWrongAnswer, showWinner,
 } from '../utils.js';
 
-// Приветствие игрока & правила игры
+// Welcome & Rules
 console.log('Welcome to the Brain Games!');
 const playerName = readlineSync.question('May I have your name? ');
 console.log(`Hello, ${playerName}!`);
 console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-// Функция, проверяющая чётность числа
+// Logic for the even function
 const isEven = (number) => number % 2 === 0;
 
-// Логика игры
+// Game logic
 export default () => {
   for (let i = 0; i <= 2; i += 1) {
     const randomNumber = getRandomInRange();

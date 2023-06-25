@@ -18,22 +18,22 @@ npm link
 ## Start games
 
 ```bash
-Запуск приветствия игр разума
+Start for the brain-games greeting
 brain-game
 
-Запуск игры проверки чётности числа
+Start for the brain-even game
 brain-even
 
-Запуск игры "калькулятор"
+Start for the brain-calc game
 brain-calc
 
-Запуск игры "наименьший общий делитель"
+Start for the brain-gcd game
 brain-gcd
 
-Запуск игры "арифметическая прогрессия"
+Start for the brain-progression game
 brain-progression
 
-Запуск игры определения простого числа
+Start for the brain-prime game
 brain-prime
 ```
 
