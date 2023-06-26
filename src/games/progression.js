@@ -4,7 +4,7 @@ import { getRandomInRange } from '../utils.js';
 const rules = 'What number is missing in the progression?';
 
 const makeProgression = () => {
-  const progression = [];
+  let progression = [];
   let progressionMember = getRandomInRange();
   const progressionDiff = getRandomInRange(0, 10);
   const hiddenIndex = Math.floor(Math.random() * 10);
@@ -20,6 +20,7 @@ const makeProgression = () => {
       progressionMember += progressionDiff;
     }
   }
+  progression = progression.join(' ');
   return [progression, hiddenMember];
 };
 
