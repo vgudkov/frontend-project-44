@@ -4,7 +4,7 @@ import { getWrongAnswer, showWinner } from './utils.js';
 // Constant for the rounds number
 const roundsCount = 3;
 
-const runEngine = (rules, makeRound) => {
+export default (rules, makeRound) => {
   // Player greeting
   console.log('Welcome to the Brain Games!');
   const playerName = readlineSync.question('May I have your name? ');
@@ -16,7 +16,7 @@ const runEngine = (rules, makeRound) => {
   // Create a cycle for 1 round
   for (let i = 0; i < roundsCount; i += 1) {
     const [question, correctAnswer] = makeRound();
-    console.log(`Question: ${question}`);
+    console.log(question);
     const playerAnswer = readlineSync.question('Your answer: ');
 
     if (playerAnswer === correctAnswer) {

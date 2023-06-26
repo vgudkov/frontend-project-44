@@ -1,59 +1,35 @@
-import readlineSync from 'readline-sync';
-import { getRandomInRange, getWrongAnswer, showWinner } from '../utils.js';
+import runEngine from '../index.js';
+import { getRandomInRange } from '../utils.js';
 
-// Welcome & Rules
-console.log('Welcome to the Brain Games!');
-const playerName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${playerName}!`);
-console.log('What is the result of the expression?');
+const rules = 'What is the result of the expression?';
 
-// Game logic
-export default () => {
-  const mathOperations = ['+', '-', '*'];
-
-  for (let i = 0; i <= 2; i += 1) {
-    const firstNumber = getRandomInRange();
-    const secondNumber = getRandomInRange();
-    const operationSign = mathOperations[getRandomInRange(0, 2)];
-
-    console.log(`Question: ${firstNumber} ${operationSign} ${secondNumber}`);
-    const playerAnswer = readlineSync.question('Your answer: ');
-
-    let additionResult;
-    let substractionResult;
-    let multiplicationResult;
-    const trueResult = [];
-
-    switch (operationSign) {
-      case '+':
-        additionResult = firstNumber + secondNumber;
-        additionResult = additionResult.toString();
-        trueResult.push(additionResult);
-        break;
-      case '-':
-        substractionResult = firstNumber - secondNumber;
-        substractionResult = substractionResult.toString();
-        trueResult.push(substractionResult);
-        break;
-      case '*':
-        multiplicationResult = firstNumber * secondNumber;
-        multiplicationResult = multiplicationResult.toString();
-        trueResult.push(multiplicationResult);
-        break;
-      default:
-        break;
-    }
-
-    if (playerAnswer === additionResult) {
-      console.log('Correct!');
-    } else if (playerAnswer === substractionResult) {
-      console.log('Correct!');
-    } else if (playerAnswer === multiplicationResult) {
-      console.log('Correct!');
-    } else {
-      return getWrongAnswer(playerName, playerAnswer, trueResult[trueResult.length - 1]);
-    }
-  }
-
-  return showWinner(playerName);
+const getRandomOperator = () => {
+  const operators = ['+', '-', '*'];
+  return operators[getRandomInRange(0, operators.length - 1)];
 };
+
+const calculation = (num1, num2, operator) => {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Invalid operator - ${operator}`);
+  }
+};
+
+const generateRound = () => {
+  const num1 = getRandomInRange();
+  const num2 = getRandomInRange();
+  const operator = getRandomOperator();
+
+  const question = `Question: ${num1} ${operator} ${num2}`;
+  const answer = String(calculation(num1, num2, operator));
+
+  return [question, answer];
+};
+
+export default () => runEngine(rules, generateRound);

@@ -1,45 +1,30 @@
-import readlineSync from 'readline-sync';
-import {
-  getRandomInRange, getWrongAnswer, showWinner,
-} from '../utils.js';
+import runEngine from '../index.js';
+import { getRandomInRange } from '../utils.js';
 
-// Welcome & Rules
-console.log('Welcome to the Brain Games!');
-const playerName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${playerName}!`);
-console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 // Logic for the prime function
 const isPrime = (number) => {
   if (number < 2) {
-    return false;
+    return 'no';
   }
 
   let divider = 2;
   while (divider <= number / 2) {
     if (number % divider === 0) {
-      return false;
+      return 'no';
     }
     divider += 1;
   }
-  return true;
+  return 'yes';
 };
 
-// Game logic
-export default () => {
-  for (let i = 0; i <= 2; i += 1) {
-    const randomNumber = getRandomInRange();
-    console.log(`Question: ${randomNumber}`);
-    const playerAnswer = readlineSync.question('Your answer: ');
+const generateRound = () => {
+  const num = getRandomInRange();
+  const question = `Question: ${num}`;
+  const answer = isPrime(num);
 
-    if (playerAnswer === 'yes' && isPrime(randomNumber)) {
-      console.log('Correct!');
-    } else if (playerAnswer === 'no' && !isPrime(randomNumber)) {
-      console.log('Correct!');
-    } else {
-      return getWrongAnswer(playerName, 'yes', 'no');
-    }
-  }
-
-  return showWinner(playerName);
+  return [question, answer];
 };
+
+export default () => runEngine(rules, generateRound);

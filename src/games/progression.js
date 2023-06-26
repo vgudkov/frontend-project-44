@@ -1,42 +1,35 @@
-import readlineSync from 'readline-sync';
-import {
-  getRandomInRange, getWrongAnswer, showWinner,
-} from '../utils.js';
+import runEngine from '../index.js';
+import { getRandomInRange } from '../utils.js';
 
-// Welcome & Rules
-console.log('Welcome to the Brain Games!');
-const playerName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${playerName}!`);
-console.log('What number is missing in the progression?');
+const rules = 'What number is missing in the progression?';
 
-// Game logic
-export default () => {
-  for (let i = 0; i <= 2; i += 1) {
-    const progressionMassive = [];
-    const progressionDiff = 10 - getRandomInRange(0, 10);
-    let progressionMember = getRandomInRange();
+const makeProgression = () => {
+  const progression = [];
+  let progressionMember = getRandomInRange();
+  const progressionDiff = getRandomInRange(0, 10);
+  const hiddenIndex = Math.floor(Math.random() * 10);
+  let hiddenMember;
 
-    for (let j = 0; j < 10; j += 1) {
-      progressionMassive.push(progressionMember);
+  for (let i = 0; i <= 10; i += 1) {
+    if (i === hiddenIndex) {
+      hiddenMember = progressionMember;
+      progression.push('..');
+      progressionMember += progressionDiff;
+    } else {
+      progression.push(progressionMember);
       progressionMember += progressionDiff;
     }
-
-    const randomHiddenMember = getRandomInRange(0, 10);
-    let trueProgressionMember = progressionMassive[randomHiddenMember];
-    trueProgressionMember = trueProgressionMember.toString();
-    progressionMassive[randomHiddenMember] = '..';
-
-    const progressionRow = progressionMassive.join(' ');
-
-    console.log(`Question: ${progressionRow}`);
-    const playerAnswer = readlineSync.question('Your answer: ');
-
-    if (playerAnswer === trueProgressionMember) {
-      console.log('Correct!');
-    } else {
-      return getWrongAnswer(playerName, playerAnswer, trueProgressionMember);
-    }
   }
-
-  return showWinner(playerName);
+  return [progression, hiddenMember];
 };
+
+const generateRound = () => {
+  const [progression, hiddenNumber] = makeProgression();
+
+  const question = `Question: ${progression}`;
+  const answer = String(hiddenNumber);
+
+  return [question, answer];
+};
+
+export default () => runEngine(rules, generateRound);
