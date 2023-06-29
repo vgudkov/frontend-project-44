@@ -3,32 +3,27 @@ import { getRandomInRange } from '../utils.js';
 
 const rules = 'What number is missing in the progression?';
 
-const makeProgression = () => {
-  let progression = [];
-  let progressionMember = getRandomInRange();
-  const progressionDiff = getRandomInRange(0, 10);
-  const hiddenIndex = Math.floor(Math.random() * 10);
-  let hiddenMember;
-
-  for (let i = 0; i <= 10; i += 1) {
-    if (i === hiddenIndex) {
-      hiddenMember = progressionMember;
-      progression.push('..');
-      progressionMember += progressionDiff;
-    } else {
-      progression.push(progressionMember);
-      progressionMember += progressionDiff;
-    }
+const makeProgression = (start, step, length) => {
+  const progression = [];
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
-  progression = progression.join(' ');
-  return [progression, hiddenMember];
+  return progression;
 };
 
 const generateRound = () => {
-  const [progression, hiddenNumber] = makeProgression();
+  const progressionMember = getRandomInRange();
+  const progressionStep = getRandomInRange(1, 10);
+  const progressionLength = 10;
+  let progression = makeProgression(progressionMember, progressionStep, progressionLength);
+  const hiddenIndex = Math.floor(Math.random() * (progressionLength - 1));
+
+  const hiddenMember = progression[hiddenIndex];
+  progression[hiddenIndex] = '..';
+  progression = progression.join(' ');
 
   const question = `Question: ${progression}`;
-  const answer = String(hiddenNumber);
+  const answer = String(hiddenMember);
 
   return [question, answer];
 };

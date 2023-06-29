@@ -6,23 +6,23 @@ const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 // Logic for the prime function
 const isPrime = (number) => {
   if (number < 2) {
-    return 'no';
+    return false;
   }
 
   let divider = 2;
   while (divider <= number / 2) {
     if (number % divider === 0) {
-      return 'no';
+      return false;
     }
     divider += 1;
   }
-  return 'yes';
+  return true;
 };
 
 const generateRound = () => {
   const num = getRandomInRange();
   const question = `Question: ${num}`;
-  const answer = isPrime(num);
+  const answer = isPrime(num) ? 'yes' : 'no';
 
   return [question, answer];
 };

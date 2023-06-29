@@ -1,19 +1,15 @@
 import readlineSync from 'readline-sync';
-import { getWrongAnswer, showWinner } from './utils.js';
+import { getWrongAnswer } from './utils.js';
 
-// Constant for the rounds number
 const roundsCount = 3;
 
 export default (rules, makeRound) => {
-  // Player greeting
   console.log('Welcome to the Brain Games!');
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
 
-  // Show the rules
   console.log(`${rules}`);
 
-  // Create a cycle for 1 round
   for (let i = 0; i < roundsCount; i += 1) {
     const [question, correctAnswer] = makeRound();
     console.log(question);
@@ -25,6 +21,6 @@ export default (rules, makeRound) => {
       return getWrongAnswer(playerName, playerAnswer, correctAnswer);
     }
   }
-  // Victory message
-  return showWinner(playerName);
+
+  return console.log(`Congratulations, ${playerName}!`);
 };
