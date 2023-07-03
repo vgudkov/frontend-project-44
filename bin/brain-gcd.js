@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import gcdCalcFunction from '../src/games/gcd.js';
+import runGcdGame from '../src/games/gcd.js';
 
-gcdCalcFunction();
+runGcdGame();

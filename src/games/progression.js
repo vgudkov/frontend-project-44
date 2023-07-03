@@ -16,13 +16,13 @@ const generateRound = () => {
   const progressionStep = getRandomInRange(1, 10);
   const progressionLength = 10;
   let progression = makeProgression(progressionMember, progressionStep, progressionLength);
-  const hiddenIndex = Math.floor(Math.random() * (progressionLength - 1));
+  const hiddenIndex = getRandomInRange(0, (progressionLength - 1));
 
   const hiddenMember = progression[hiddenIndex];
   progression[hiddenIndex] = '..';
   progression = progression.join(' ');
 
-  const question = `Question: ${progression}`;
+  const question = `${progression}`;
   const answer = String(hiddenMember);
 
   return [question, answer];

@@ -12,7 +12,7 @@ export default (rules, makeRound) => {
 
   for (let i = 0; i < roundsCount; i += 1) {
     const [question, correctAnswer] = makeRound();
-    console.log(question);
+    console.log(`Question: ${question}`);
     const playerAnswer = readlineSync.question('Your answer: ');
 
     if (playerAnswer === correctAnswer) {
